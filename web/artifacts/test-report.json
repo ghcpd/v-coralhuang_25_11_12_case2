@@ -1,0 +1,165 @@
+{
+  "layout_non_overlap": true,
+  "media_aspect_ratio_ok": true,
+  "no_forced_rotation": true,
+  "time_header_stability": true,
+  "accessibility_smoke": true,
+  "errors": [],
+  "append_bottom_test": {
+    "before": 0,
+    "after": 0
+  },
+  "lastInsertionLocation": "bottom",
+  "beforeList": [
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Hey! How are you doing today?"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "I'm good! Working on that new "
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": ""
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Cool, send me screenshots late"
+    }
+  ],
+  "mid1List": [
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Hey! How are you doing today?"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "I'm good! Working on that new "
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": ""
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Cool, send me screenshots late"
+    },
+    {
+      "tag": "DIV",
+      "cls": "time-header",
+      "text": "09:09 AM"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Random text message 17"
+    }
+  ],
+  "mid2List": [
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Hey! How are you doing today?"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "I'm good! Working on that new "
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": ""
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Cool, send me screenshots late"
+    },
+    {
+      "tag": "DIV",
+      "cls": "time-header",
+      "text": "09:09 AM"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Random text message 17"
+    },
+    {
+      "tag": "DIV",
+      "cls": "time-header",
+      "text": "09:00 AM"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Random text message 87"
+    }
+  ],
+  "afterList": [
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Hey! How are you doing today?"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "I'm good! Working on that new "
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": ""
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Cool, send me screenshots late"
+    },
+    {
+      "tag": "DIV",
+      "cls": "time-header",
+      "text": "09:09 AM"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Random text message 17"
+    },
+    {
+      "tag": "DIV",
+      "cls": "time-header",
+      "text": "09:00 AM"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Random text message 87"
+    },
+    {
+      "tag": "DIV",
+      "cls": "time-header",
+      "text": "09:10 AM"
+    },
+    {
+      "tag": "DIV",
+      "cls": "message-row",
+      "text": "Random text message 69"
+    }
+  ],
+  "scroll_before": 0,
+  "scroll_mid1": 0,
+  "scroll_mid2": 0,
+  "scroll_after": 0
+}
