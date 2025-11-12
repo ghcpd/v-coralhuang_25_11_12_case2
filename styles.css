@@ -1,0 +1,24 @@
+/* ui_fixed styles - responsive and accessible */
+*{box-sizing:border-box}
+body{font-family:Inter, Arial, sans-serif;margin:0;background:#f8f8fb;color:#222}
+.page{display:flex;align-items:center;justify-content:center;height:100vh;padding:20px}
+.chat-wrapper{width:100%;max-width:760px}
+.chat-container{background:#fff;border-radius:12px;height:80vh;overflow-y:auto;border:1px solid #e6e6f0;padding:8px}
+.time-header{position:sticky;top:0;text-align:center;font-size:12px;color:#666;padding:8px;background:linear-gradient(180deg,#fff,#f6f6f8);border-bottom:1px solid #eee;z-index:10}
+.messages{display:flex;flex-direction:column;gap:12px;padding:12px}
+.message{display:flex;align-items:flex-end;gap:10px;max-width:85%;}
+.message .bubble{padding:10px 14px;border-radius:14px;line-height:1.35}
+.message-left{align-self:flex-start}
+.message-left .bubble{background:#4a90e2;color:#fff;border-top-left-radius:6px}
+.message-right{align-self:flex-end;flex-direction:row-reverse}
+.message-right .bubble{background:#e6e6e6;color:#222;border-top-right-radius:6px}
+.avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0}
+.message-media .media{max-width:240px;height:auto;border-radius:10px;display:block;object-fit:cover}
+/* enforce natural aspect ratio on images */
+.media{max-width:100%;height:auto}
+/* fast but not jarring transition - no flicker animation for header */
+.time-header{transition:opacity .15s linear}
+.controls{display:flex;gap:8px;padding:12px;justify-content:flex-end}
+button{background:#4a90e2;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+button[aria-label]{outline-offset:3px}
+@media (max-width:480px){.message-media .media{max-width:180px}.chat-wrapper{padding:0 6px}}

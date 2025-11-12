@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat UI Fixed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+  <section class="chat-wrapper">
+    <div class="chat-container" id="chat" role="log" aria-live="polite">
+      <div class="time-header" id="time-header-0" role="separator">09:00 AM</div>
+      <div class="messages" id="messages">
+        <div class="message message-left" data-id="m1">
+          <img class="avatar" src="assets/avatars/avatar1.svg" alt="User avatar">
+          <div class="bubble">Hey! How are you doing today?</div>
+        </div>
+        <div class="message message-right" data-id="m2">
+          <div class="bubble">I'm good! Working on that new UI layout.</div>
+          <img class="avatar" src="assets/avatars/avatar2.svg" alt="User avatar">
+        </div>
+        <div class="message message-left message-media" data-id="m3">
+          <img class="avatar" src="assets/avatars/avatar3.svg" alt="User avatar">
+          <img class="media" src="assets/media/tall1.jpg" alt="Screenshot of UI">
+        </div>
+        <div class="message message-right" data-id="m4">
+          <div class="bubble">Cool, send me screenshots later.</div>
+          <img class="avatar" src="assets/avatars/avatar4.svg" alt="User avatar">
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="simulate" aria-label="Simulate scroll and updates">Simulate</button>
+      <button id="insertOnce" aria-label="Insert a message once">Insert Once</button>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

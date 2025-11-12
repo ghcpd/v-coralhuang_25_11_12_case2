@@ -1,0 +1,5 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='600' viewBox='0 0 200 600'>
+  <rect width='200' height='600' fill='#f3f3f3' />
+  <rect x='20' y='80' width='160' height='440' rx='10' fill='#d5f5ef' />
+  <text x='100' y='300' text-anchor='middle' fill='#333' font-size='20'>Tall Media</text>
+</svg>
