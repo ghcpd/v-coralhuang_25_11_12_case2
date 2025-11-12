@@ -1,74 +1,113 @@
-{
-  "ui_error_cases": [
-    {
-      "id": "UI-001",
-      "title": "Unvalidated URL input causes infinite loading",
-      "input": "User enters 'example' or 'https//missing-colon.com' and presses Submit.",
-      "actual_behavior": "All iframe loaders remain visible indefinitely. The input box is locked. No error message appears. Console shows DNS or cross-origin errors.",
-      "expected_behavior": "The system should validate the URL format before loading. Invalid input should trigger an inline error message and prevent the loading state."
-    },
-    {
-      "id": "UI-002",
-      "title": "Asynchronous iframe loaders never synchronize",
-      "input": "User loads a valid URL where one iframe completes loading early while others are still pending.",
-      "actual_behavior": "Some frames display content, others remain stuck with a loading spinner. The global loading indicator never clears.",
-      "expected_behavior": "Each iframe should manage its own loader independently, and the global indicator should disappear once all frames are either completed or failed."
-    },
-    {
-      "id": "UI-003",
-      "title": "Cross-domain access triggers blocking alert and UI freeze",
-      "input": "User enters an external site (e.g., 'https://google.com') and presses Submit.",
-      "actual_behavior": "A blocking alert() appears with a browser security message. All iframes reset to the default page after user dismisses the alert. The loader remains active.",
-      "expected_behavior": "The system should handle cross-origin restrictions gracefully using non-blocking UI feedback (toast or inline banner) and replace the affected iframe with a placeholder message."
-    },
-    {
-      "id": "UI-004",
-      "title": "Concurrent submissions break loader synchronization",
-      "input": "User quickly submits multiple URLs before the first load completes.",
-      "actual_behavior": "Previous loaders are not cleared. Some iframes display old content while others refresh with the new URL. The interface flickers between states.",
-      "expected_behavior": "The application should cancel previous loading tasks, reset all loaders, and only render the most recent requested URL consistently."
-    },
-    {
-      "id": "UI-005",
-      "title": "Incorrect scrollbar toggle logic distorts layout",
-      "input": "User repeatedly checks and unchecks the 'Show scrollbar' checkbox.",
-      "actual_behavior": "Iframe widths continuously increase or shrink due to cumulative width adjustments. Layout becomes misaligned and horizontal scrolling breaks.",
-      "expected_behavior": "The scrollbar toggle should apply a fixed CSS class without altering inline width values. Layout widths should remain stable."
-    },
-    {
-      "id": "UI-006",
-      "title": "Invalid loader hiding sequence after partial failure",
-      "input": "One iframe fails to load while others succeed.",
-      "actual_behavior": "Some loader icons remain visible even after successful iframes finish. The failed iframe does not show any error placeholder.",
-      "expected_behavior": "Each loader should hide once the corresponding iframe completes or fails, and failed iframes should display a clear fallback message."
-    },
-    {
-      "id": "UI-007",
-      "title": "Alert-driven error handling blocks accessibility flow",
-      "input": "Cross-domain or timeout error triggers the alert() function.",
-      "actual_behavior": "Screen readers cannot announce the alert content. The focus is trapped until the user manually dismisses the popup.",
-      "expected_behavior": "Use an accessible non-blocking error notification (aria-live region or toast) to inform users of the issue without blocking input focus."
-    },
-    {
-      "id": "UI-008",
-      "title": "Frame container width calculation not reactive to resize",
-      "input": "User resizes the browser window or changes zoom level.",
-      "actual_behavior": "Inner container width remains fixed. Some iframes are cut off or overlap. Scrollbars appear incorrectly.",
-      "expected_behavior": "The layout should recalculate frame widths on window resize and maintain full visibility of all previews."
-    },
-    {
-      "id": "UI-009",
-      "title": "Missing error recovery after invalid input retry",
-      "input": "User enters an invalid URL, sees no feedback, then enters a valid URL.",
-      "actual_behavior": "The loaders remain frozen from the previous state. The new valid URL never updates the iframes.",
-      "expected_behavior": "On any new submission, the system should clear previous errors, reset all loaders, and refresh all iframes cleanly."
-    },
-    {
-      "id": "UI-010",
-      "title": "No visual indication for ongoing asynchronous request",
-      "input": "User submits a URL that takes several seconds to load.",
-      "actual_behavior": "There is no progress indicator except the static loader icon. User has no sense of time or progress.",
-      "expected_behavior": "Display a dynamic progress bar or textual hint ('Loading... please wait') to communicate system activity."
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WeatherBot Control Panel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
     }
-  ]
-}
+
+    /* Layout problem: absolute positioned overlapping containers */
+    .component {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      border: 1px solid #ccc;
+      background: #fff;
+      overflow: auto;
+    }
+
+    .component + .component {
+      left: 30%; /* Overlapping area */
+      background: #fafafa;
+    }
+
+    /* Button style not applied because of missing class */
+    .button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+
+    /* Markdown area */
+    .markdown {
+      position: relative;
+      top: 400px;
+      background: #f8f8f8;
+      padding: 20px;
+      font-family: monospace;
+      white-space: pre;
+      border-top: 2px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Invalid XML-like tag structure -->
+  <project version="4">
+    <component name="ChangeListManager">
+      <div class="component">
+        <h2>Change List Manager</h2>
+        <option name="TRACKING_ENABLED" value="true"></option>
+        <option name="SHOW_DIALOG" value="false"></option>
+        <p>Currently active file: <b>README.md</b></p>
+
+        <!-- Buttons defined inside invalid container, missing styling -->
+        <button disabled="true">Run</button>
+        <button>Debug</button>
+        <!-- Missing .button class, style not applied -->
+      </div>
+
+      <!-- Second panel overlapping the first -->
+      <div class="component">
+        <h2>Run Configurations</h2>
+        <configuration name="rasa_core_sdk.endpoint" type="PythonConfigurationType">
+          <env name="SENIVERSE_KEY" value="1worlmmidflsziwr"></env>
+          <option name="RUNNER" value="coverage.py"></option>
+        </configuration>
+        <p>Status: <span style="color: red;">Not Running</span></p>
+      </div>
+    </component>
+
+    <!-- Markdown preview section with syntax corruption -->
+    <div class="markdown">
+# WeatherBot UI  
+**Version:** 1.0  
+
+*Features:*  
+- Responsive webchat  
+- Multi-iframe live preview  
+- Integration with rasa_core  
+
+<component>⚠️ Error rendering markdown block</component>  
+- List Item 1  
+- List Item 2  
+
+    </div>
+  </project>
+
+  <script>
+    // Simulated incorrect event logic
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Action not implemented.');
+      });
+    });
+
+    // Simulated layout and parsing issues
+    window.onload = function() {
+      console.warn("UI layout overlap detected: two '.component' elements share overlapping bounds.");
+      console.error("Markdown parsing failed: Unexpected <component> tag inside markdown block.");
+    };
+  </script>
+</body>
+</html>
