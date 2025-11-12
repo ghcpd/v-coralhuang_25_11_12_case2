@@ -1,113 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>WeatherBot Control Panel</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-    }
+<meta charset="UTF-8">
+<title>Chat UI Broken Enhanced</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow-y: scroll;
+  background-color: #f3f3f3;
+}
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
 
-    /* Layout problem: absolute positioned overlapping containers */
-    .component {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 60%;
-      height: 100%;
-      border: 1px solid #ccc;
-      background: #fff;
-      overflow: auto;
-    }
+/* BUG #1: absolute positioning creates overlap and drifting avatars */
+.message {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 15px;
+  border-radius: 16px;
+  max-width: 70%;
+  margin: 8px;
+  color: #fff;
+  transition: all 0.2s;
+}
+.message.left {
+  left: 10px;
+  background: #4a90e2;
+}
+.message.right {
+  right: 10px;
+  background: #7b7b7b;
+}
 
-    .component + .component {
-      left: 30%; /* Overlapping area */
-      background: #fafafa;
-    }
+/* avatar not fixed to bubble due to absolute layout */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
 
-    /* Button style not applied because of missing class */
-    .button {
-      background: #007bff;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-right: 6px;
-    }
+/* BUG #2: random size and wrong rotation simulates EXIF & ratio error */
+.message img.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(90deg);
+  border-radius: 10px;
+}
 
-    /* Markdown area */
-    .markdown {
-      position: relative;
-      top: 400px;
-      background: #f8f8f8;
-      padding: 20px;
-      font-family: monospace;
-      white-space: pre;
-      border-top: 2px solid #ddd;
-    }
-  </style>
+/* BUG #3: header jumps when new inserted, fixed positioning amplifies flicker */
+.time-header {
+  position: sticky;
+  top: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  padding: 5px;
+  background: #eee;
+  z-index: 10;
+  animation: flicker 0.3s ease-in-out;
+}
+@keyframes flicker {
+  0% { opacity: 0; transform: translateY(-10px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+</style>
 </head>
-
 <body>
-  <!-- Invalid XML-like tag structure -->
-  <project version="4">
-    <component name="ChangeListManager">
-      <div class="component">
-        <h2>Change List Manager</h2>
-        <option name="TRACKING_ENABLED" value="true"></option>
-        <option name="SHOW_DIALOG" value="false"></option>
-        <p>Currently active file: <b>README.md</b></p>
 
-        <!-- Buttons defined inside invalid container, missing styling -->
-        <button disabled="true">Run</button>
-        <button>Debug</button>
-        <!-- Missing .button class, style not applied -->
-      </div>
+<div class="chat-container" id="chat">
+  <div class="time-header">09:00 AM</div>
+  <div class="message left">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=1">
+    <div>Hey! How are you doing today?</div>
+  </div>
+  <div class="message right">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=2">
+    <div>I'm good! Working on that new UI layout.</div>
+  </div>
+  <div class="message left">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=3">
+    <img class="media" src="https://picsum.photos/200/600" alt="img">
+  </div>
+  <div class="message right">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=4">
+    <div>Cool, send me screenshots later.</div>
+  </div>
+</div>
 
-      <!-- Second panel overlapping the first -->
-      <div class="component">
-        <h2>Run Configurations</h2>
-        <configuration name="rasa_core_sdk.endpoint" type="PythonConfigurationType">
-          <env name="SENIVERSE_KEY" value="1worlmmidflsziwr"></env>
-          <option name="RUNNER" value="coverage.py"></option>
-        </configuration>
-        <p>Status: <span style="color: red;">Not Running</span></p>
-      </div>
-    </component>
+<button id="simulate">Simulate Scroll & Update</button>
 
-    <!-- Markdown preview section with syntax corruption -->
-    <div class="markdown">
-# WeatherBot UI  
-**Version:** 1.0  
+<script>
+const chat = document.getElementById('chat');
+const btn = document.getElementById('simulate');
 
-*Features:*  
-- Responsive webchat  
-- Multi-iframe live preview  
-- Integration with rasa_core  
+btn.onclick = () => {
+  // use requestAnimationFrame for continuous fast scroll simulation
+  let scrollCount = 0;
+  function fastScroll() {
+    chat.scrollTop = (scrollCount % 2 === 0) ? chat.scrollHeight : 0;
+    scrollCount++;
+    if (scrollCount < 20) {
+      requestAnimationFrame(fastScroll);
+    } else {
+      injectNewContent();
+    }
+  }
+  fastScroll();
+};
 
-<component>⚠️ Error rendering markdown block</component>  
-- List Item 1  
-- List Item 2  
+// BUG: injecting without cleanup → drifting avatars, duplicated IDs, unstable DOM
+function injectNewContent() {
+  const header = document.createElement('div');
+  header.className = 'time-header';
+  header.innerText = '09:' + (Math.floor(Math.random() * 60)).toString().padStart(2, '0') + ' AM';
+  chat.insertBefore(header, chat.firstChild);
 
-    </div>
-  </project>
+  const msg = document.createElement('div');
+  msg.className = (Math.random() > 0.5) ? 'message left' : 'message right';
 
-  <script>
-    // Simulated incorrect event logic
-    document.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        alert('Action not implemented.');
-      });
-    });
+  // random avatar & random image size to simulate inconsistent media
+  const avatar = document.createElement('img');
+  avatar.className = 'avatar';
+  avatar.src = 'https://i.pravatar.cc/40?img=' + Math.floor(Math.random() * 10 + 1);
 
-    // Simulated layout and parsing issues
-    window.onload = function() {
-      console.warn("UI layout overlap detected: two '.component' elements share overlapping bounds.");
-      console.error("Markdown parsing failed: Unexpected <component> tag inside markdown block.");
-    };
-  </script>
+  msg.appendChild(avatar);
+
+  if (Math.random() > 0.5) {
+    const img = document.createElement('img');
+    img.className = 'media';
+    const w = Math.floor(Math.random() * 200 + 150);
+    const h = Math.floor(Math.random() * 400 + 200);
+    img.src = `https://picsum.photos/${w}/${h}`;
+    msg.appendChild(img);
+  } else {
+    msg.appendChild(document.createTextNode('Random text message ' + Math.floor(Math.random() * 100)));
+  }
+
+  chat.appendChild(msg);
+
+  // Force layout reflow and scroll jump
+  chat.innerHTML += '';
+}
+</script>
+
 </body>
 </html>
