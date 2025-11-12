@@ -1,0 +1,42 @@
+/* styles.css - non-overlapping layout, anchored avatars, responsive rules */
+:root{
+  --bg:#f2f4f8;
+  --panel:#fff;
+  --accent:#007bff;
+  --muted:#6b7280;
+  --bubble-max:70ch;
+}
+html,body{height:100%;margin:0;font-family:Inter, Arial, sans-serif;background:var(--bg);}
+.app{display:grid;grid-template-columns:280px 1fr;min-height:100vh;gap:16px;padding:16px}
+.sidebar{background:var(--panel);border:1px solid #ddd;padding:12px;border-radius:8px}
+.button{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+
+.chat{display:flex;flex-direction:column;gap:8px}
+.chat-header{background:var(--panel);padding:12px;border-radius:8px;border:1px solid #ddd}
+.message-list{background:#ffffff;padding:12px;border-radius:8px;border:1px solid #ddd;overflow:auto;max-height:60vh}
+
+/* Use flex rows for messages; avatar anchored at left */
+.message{display:flex;align-items:flex-start;gap:12px;padding:8px 6px;margin:6px 0;border-radius:8px}
+.message .avatar{flex:0 0 44px;height:44px;border-radius:50%;background:#eee;display:inline-flex;align-items:center;justify-content:center;font-weight:600;color:#555}
+.message .bubble{background:#f7f9fc;padding:10px;border-radius:8px;max-width:var(--bubble-max);box-shadow:0 1px 0 rgba(0,0,0,0.03)}
+.message[data-side="right"]{flex-direction:row-reverse}
+.message[data-side="right"] .bubble{background:#e8f0ff}
+
+/* time header stability */
+.time-header{display:block;font-size:0.9rem;color:var(--muted);margin:12px 6px;padding:8px 6px;border-top:1px dashed #eee;border-bottom:1px dashed #eee}
+.time-header[role="separator"]{font-weight:600}
+
+/* images: preserve aspect ratio and constrain size */
+.message img{display:block;max-width:80%;height:auto;border-radius:6px;object-fit:contain;max-height:60vh}
+.message .media{flex:1 1 auto;display:block}
+
+/* prevent CSS rotate from being used in the page */
+img{transform:none !important}
+
+/* responsive */
+@media (max-width:640px){
+  .app{grid-template-columns:1fr; padding:8px}
+  .sidebar{order:2}
+  .chat{order:1}
+  .message-list{max-height:50vh}
+}
