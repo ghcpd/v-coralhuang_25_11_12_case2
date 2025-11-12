@@ -1,0 +1,68 @@
+/* Reset + base */
+* { box-sizing:border-box; }
+body { font-family: Arial, sans-serif; margin:0; background:#f3f3f3; }
+.chat-container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  background: #fff;
+  height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+  position: relative;
+}
+
+/* Time header - sticky but without animation */
+.time-header {
+  position: sticky;
+  top: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  padding: 6px 8px;
+  background: #f0f0f0;
+  z-index: 10;
+  border-radius: 8px;
+}
+
+/* Bubbles now participate in normal flow */
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 12px;
+  color: #fff;
+}
+.message.left { align-self:flex-start; background:#4a90e2; }
+.message.right { align-self:flex-end; background:#7b7b7b; flex-direction:row-reverse; }
+
+.avatar { width:36px; height:36px; border-radius:50%; flex:0 0 36px; }
+.bubble { color:inherit; }
+.bubble img.media { display:block; max-width: 320px; max-height: 60vh; width:auto; height:auto; object-fit:cover; border-radius:8px; transform:none !important; }
+
+/* Responsive constraints to prevent overlap */
+@media (max-width:600px) {
+  .message { max-width: 85%; }
+  .bubble img.media { max-width: 80%; }
+}
+
+/* Simulate button */
+button#simulate {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Accessibility focus */
+button#simulate:focus { outline: 2px solid #333; }

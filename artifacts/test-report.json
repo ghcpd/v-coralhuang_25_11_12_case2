@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "details": {
+    "layout_non_overlap": {
+      "passed": true,
+      "message": "No overlaps detected under sampling scroll."
+    },
+    "media_aspect_ratio_ok": {
+      "passed": true,
+      "message": "Media aspect ratios preserved within bounds."
+    },
+    "no_forced_rotation": {
+      "passed": true,
+      "message": "No forced rotation found."
+    },
+    "time_header_stability": {
+      "passed": true,
+      "message": "Time headers stable after insertions."
+    },
+    "accessibility_smoke": {
+      "passed": true,
+      "message": "No duplicate IDs; Accessibility checks ok."
+    }
+  }
+}

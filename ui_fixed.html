@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat UI Fixed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="chat-container" id="chat" role="list">
+  <div class="time-header" id="time-0" role="separator" aria-label="09:00 AM">09:00 AM</div>
+  <div class="message left" id="msg-1" role="listitem" aria-label="message from user">
+    <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' fill='%234a90e2'/></svg>" alt="avatar">
+    <div class="bubble">Hey! How are you doing today?</div>
+  </div>
+  <div class="message right" id="msg-2" role="listitem" aria-label="message from other">
+    <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' fill='%237b7b7b'/></svg>" alt="avatar">
+    <div class="bubble">I'm good! Working on that new UI layout.</div>
+  </div>
+  <div class="message left" id="msg-3" role="listitem" aria-label="message with image">
+    <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' fill='%23007bff'/></svg>" alt="avatar">
+    <div class="bubble">
+      <img class="media" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='400'><rect width='200' height='400' fill='%23c0c0c0'/></svg>" alt="sample tall image">
+    </div>
+  </div>
+  <div class="message right" id="msg-4" role="listitem" aria-label="message from other 2">
+    <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='40' height='40' fill='%23b77bff'/></svg>" alt="avatar">
+    <div class="bubble">Cool, send me screenshots later.</div>
+  </div>
+</div>
+
+<button id="simulate" aria-label="Simulate Scroll and Update">Simulate Scroll & Update</button>
+
+<script src="app.js"></script>
+</body>
+</html>
