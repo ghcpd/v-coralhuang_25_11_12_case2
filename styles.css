@@ -1,0 +1,26 @@
+/* styles.css - extracted and fixed */
+:root{--bg:#f3f3f3;--left:#4a90e2;--right:#7b7b7b;--bubble-radius:16px}
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--bg)}
+.chat-wrapper{display:flex;justify-content:center;padding:20px}
+.chat-container{width:100%;max-width:680px;background:white;height:80vh;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;border-radius:8px}
+.time-header{position:sticky;top:0;text-align:center;font-size:12px;color:#666;padding:6px;background:#f7f7f7;z-index:5;border-radius:6px}
+.message{display:flex;align-items:flex-end;gap:10px;max-width:80%;padding:8px;border-radius:var(--bubble-radius);color:#fff}
+.message.left{align-self:flex-start;background:var(--left);flex-direction:row}
+.message.right{align-self:flex-end;background:var(--right);flex-direction:row-reverse}
+.avatar{width:36px;height:36px;border-radius:50%;flex:0 0 auto;display:block}
+.bubble{color:#fff}
+.media{max-width:320px;width:100%;height:auto;border-radius:10px;display:block}
+
+/* ensure no forced rotations */
+.message img{transform:none}
+
+/* responsive */
+@media (max-width:520px){.media{max-width:220px}.chat-container{max-width:100%}}
+
+/* styles for accessibility focus */
+button{position:fixed;bottom:15px;right:15px;background:#4a90e2;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+button:focus{outline:3px solid #ffd54f}
+
+/* visually separate messages */
+.message + .message{margin-top:2px}
