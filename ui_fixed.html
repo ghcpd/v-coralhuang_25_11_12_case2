@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chat UI Repaired</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app" class="app-root">
+  <main class="chat-container" id="chat" role="log" aria-live="polite">
+    <div class="time-header" id="th-initial" role="separator">09:00 AM</div>
+  </main>
+  <div class="controls">
+    <button id="simulate" aria-label="simulate updates">Simulate</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+// Startup: pre-populate a few messages with local inline data images
+window.onload = () => {
+  const messages = [
+    { side: 'left',  text: 'Hey! How are you doing today?', avatarColor: '#4a90e2' },
+    { side: 'right', text: "I'm good! Working on that new UI layout.", avatarColor: '#7b7b7b' },
+    { side: 'left',  media: { w: 200, h: 600 }, avatarColor: '#d36' },
+    { side: 'right', text: 'Cool, send me screenshots later.', avatarColor: '#1a9' },
+  ];
+
+  const container = document.getElementById('chat');
+  // add a stable header
+  chatUI.addTimeHeader('09:00 AM');
+  for (const m of messages) {
+    chatUI.appendMessage(m);
+  }
+};
+
+const simulateBtn = document.getElementById('simulate');
+simulateBtn.addEventListener('click', () => {
+  // fast scroll simulation with requestAnimationFrame
+  let i = 0;
+  function fastScroll() {
+    const chat = document.getElementById('chat');
+    chat.scrollTop = (i % 2 === 0) ? chat.scrollHeight : 0;
+    i++;
+    if (i < 20) requestAnimationFrame(fastScroll);
+    else window.simulateInsertOnce();
+  }
+  fastScroll();
+});
+
+// expose simulator function for validator tests
+window.simulateInsertOnce = async function simulateInsertOnce() {
+  // insert stable header and one new message, preserving scroll
+  const id = 'th-' + Date.now();
+  chatUI.addTimeHeader('09:' + (Math.floor(Math.random() * 60)).toString().padStart(2, '0') + ' AM', id);
+
+  const side = (Math.random() > 0.5) ? 'left' : 'right';
+  const msg = { side, text: 'Inserted ' + Math.floor(Math.random()*100), avatarColor: '#8e6' };
+  chatUI.appendMessage(msg);
+};
+</script>
+</body>
+</html>

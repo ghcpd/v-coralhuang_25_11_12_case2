@@ -1,0 +1,27 @@
+{
+  "layout_non_overlap": {
+    "ok": true,
+    "details": ""
+  },
+  "media_aspect_ratio_ok": {
+    "ok": true,
+    "details": ""
+  },
+  "no_forced_rotation": {
+    "ok": true,
+    "details": ""
+  },
+  "time_header_stability": {
+    "ok": true,
+    "details": ""
+  },
+  "accessibility_smoke": {
+    "ok": true,
+    "details": ""
+  },
+  "meta": {
+    "start": 1762930639.4322202,
+    "end": 1762930641.6663141,
+    "duration": 2.2340939044952393
+  }
+}
