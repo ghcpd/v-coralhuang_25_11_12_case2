@@ -1,0 +1,10 @@
+Starting static checks...
+No duplicate IDs
+Time headers have role=separator.
+All images have alt attributes.
+Starting rendered checks with Playwright...
+No overlaps detected under sampling scroll.
+No forced rotation found.
+Media aspect ratios preserved within bounds.
+Initial headers: time-0
+After headers: time-107,time-105,time-104,time-101,time-0
