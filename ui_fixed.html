@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat UI Fixed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="chat-container" id="chat" role="log" aria-label="Chat messages">
+  <div class="time-header" id="header-0" role="separator" aria-label="09:00 AM">09:00 AM</div>
+  <div class="message left" role="article" aria-label="Message from user">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=1" alt="User avatar">
+    <div class="message-content">Hey! How are you doing today?</div>
+  </div>
+  <div class="message right" role="article" aria-label="Message from other user">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=2" alt="Other user avatar">
+    <div class="message-content">I'm good! Working on that new UI layout.</div>
+  </div>
+  <div class="message left" role="article" aria-label="Message with media">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=3" alt="User avatar">
+    <div class="message-content">
+      <img class="media" src="https://picsum.photos/200/600" alt="Shared image">
+    </div>
+  </div>
+  <div class="message right" role="article" aria-label="Message from other user">
+    <img class="avatar" src="https://i.pravatar.cc/40?img=4" alt="Other user avatar">
+    <div class="message-content">Cool, send me screenshots later.</div>
+  </div>
+</div>
+
+<button id="simulate" aria-label="Simulate scroll and update">Simulate Scroll & Update</button>
+
+<script src="app.js"></script>
+</body>
+</html>
+

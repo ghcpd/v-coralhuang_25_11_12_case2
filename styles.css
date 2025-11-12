@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow-y: scroll;
+  background-color: #f3f3f3;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Fixed: Use flex layout instead of absolute positioning */
+.message {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  max-width: 75%;
+  color: #fff;
+  transition: opacity 0.2s;
+  position: relative;
+}
+
+.message.left {
+  align-self: flex-start;
+  background: #4a90e2;
+  border-radius: 18px 18px 18px 4px;
+}
+
+.message.right {
+  align-self: flex-end;
+  background: #7b7b7b;
+  border-radius: 18px 18px 4px 18px;
+  flex-direction: row-reverse;
+}
+
+/* Avatar anchored to message bubble */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.message.left .avatar {
+  margin-right: 8px;
+}
+
+.message.right .avatar {
+  margin-left: 8px;
+}
+
+.message-content {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fixed: Remove forced rotation, preserve aspect ratio */
+.message img.media {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+  /* No transform rotation - respects natural image orientation */
+}
+
+/* Fixed: Stable time headers without flicker animation */
+.time-header {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  padding: 8px 5px;
+  margin: 12px 0;
+  background: transparent;
+  position: relative;
+  /* Removed sticky positioning and animation to prevent flicker */
+}
+
+.time-header::before,
+.time-header::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: #ddd;
+}
+
+.time-header::before {
+  left: 0;
+}
+
+.time-header::after {
+  right: 0;
+}
+
+button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 100;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+button:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .message {
+    max-width: 85%;
+  }
+  
+  .chat-container {
+    padding: 8px;
+  }
+}
+
