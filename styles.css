@@ -1,0 +1,153 @@
+/* ===========================
+   Chat UI - Fixed Styles
+   =========================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow-y: scroll;
+  background-color: #f3f3f3;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Prevent layout thrashing */
+  will-change: scroll-position;
+}
+
+/* FIX #1: Replace absolute positioning with flexbox
+   Prevents overlap and drifting avatars */
+.message {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 15px;
+  margin: 8px;
+  border-radius: 16px;
+  max-width: calc(100% - 16px);
+  color: #fff;
+  /* Smooth transitions but without triggering reflow storms */
+  transition: opacity 0.2s ease-in-out;
+  /* Ensure messages flow naturally in DOM order */
+  flex-shrink: 0;
+}
+
+.message.left {
+  background: #4a90e2;
+  justify-content: flex-start;
+}
+
+.message.right {
+  background: #7b7b7b;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+/* Avatar: Fixed size and aspect ratio */
+.avatar {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Message content: Allow text wrapping */
+.message-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+  max-width: calc(100% - 44px);
+}
+
+/* FIX #2: Media wrapper with aspect-ratio preservation
+   No forced rotation, proper containment */
+.media-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin-top: 4px;
+}
+
+.media {
+  max-width: 100%;
+  max-height: 300px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+  /* Explicitly remove any transform */
+  transform: none !important;
+  display: block;
+}
+
+/* FIX #3: Stable time headers with no flicker
+   Remove animation, use semantic markup */
+.time-header {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  padding: 5px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  flex-shrink: 0;
+  /* No animation, no position: sticky (causes reflow) */
+}
+
+.header-text {
+  display: inline-block;
+}
+
+/* Button styling */
+button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+button:active {
+  background: #1f4d7a;
+}
+
+/* Responsive: Stack at smaller widths */
+@media (max-width: 480px) {
+  .message {
+    max-width: calc(100% - 16px);
+  }
+
+  .media {
+    max-width: calc(100vw - 40px);
+  }
+}
+
+/* Accessibility: Ensure keyboard focus is visible */
+button:focus {
+  outline: 2px solid #357abd;
+  outline-offset: 2px;
+}
