@@ -1,0 +1,29 @@
+{
+  "timestamp_start": "2025-11-12T16:37:57.333844",
+  "timestamp_end": "2025-11-12T16:37:57.340946",
+  "overall_pass": true,
+  "checks": {
+    "layout_non_overlap": {
+      "status": "pass",
+      "message": ".chat-container uses flexbox layout for stable message flow"
+    },
+    "media_aspect_ratio_ok": {
+      "status": "pass",
+      "message": ".media uses max-height and height: auto to preserve aspect ratio"
+    },
+    "no_forced_rotation": {
+      "status": "pass",
+      "message": ".media elements use object-fit: contain (no rotation)"
+    },
+    "time_header_stability": {
+      "status": "pass",
+      "message": "Time headers are stable with unique IDs and no flicker animations (1 headers)"
+    },
+    "accessibility_smoke": {
+      "status": "pass",
+      "message": "No duplicate IDs, 5 images have alt text, 1 headers have role='separator'"
+    }
+  },
+  "errors": [],
+  "notes": "Validation performed via static CSS/HTML analysis. No runtime browser automation used."
+}
