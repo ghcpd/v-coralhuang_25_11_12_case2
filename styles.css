@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow-y: scroll;
+  background-color: #f3f3f3;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Fixed: Use flex layout instead of absolute positioning */
+.message {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 15px;
+  border-radius: 16px;
+  max-width: 70%;
+  margin: 8px 0;
+  color: #fff;
+  transition: opacity 0.2s;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message.left {
+  align-self: flex-start;
+  background: #4a90e2;
+  flex-direction: row;
+}
+
+.message.right {
+  align-self: flex-end;
+  background: #7b7b7b;
+  flex-direction: row-reverse;
+}
+
+/* Fixed: Avatar properly anchored to message bubble */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.message.left .avatar {
+  margin-right: 8px;
+}
+
+.message.right .avatar {
+  margin-left: 8px;
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Fixed: Remove forced rotation, preserve aspect ratio */
+.message img.media {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+  max-height: 400px;
+}
+
+/* Fixed: Stable time headers without flicker animation */
+.time-header {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  padding: 8px 5px;
+  background: #eee;
+  margin: 12px 0;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+button:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Responsive rules to prevent overlap */
+@media (max-width: 600px) {
+  .message {
+    max-width: 85%;
+  }
+}
+
