@@ -1,0 +1,36 @@
+{
+  "layout_non_overlap": true,
+  "media_aspect_ratio_ok": true,
+  "no_forced_rotation": true,
+  "time_header_stability": true,
+  "accessibility_smoke": true,
+  "details": {
+    "dup_ids": [],
+    "missing_button_labels": 0,
+    "missing_alts": [],
+    "time_header_role_count": 1,
+    "media": [
+      {
+        "natural": {
+          "w": 200,
+          "h": 400
+        },
+        "client": {
+          "w": 200,
+          "h": 400
+        },
+        "ratio_diff": 0.0
+      }
+    ],
+    "header_scroll_deltas": [
+      36,
+      36,
+      36,
+      36,
+      36
+    ],
+    "live_dup_ids": [],
+    "missing_alts_live": []
+  },
+  "summary": "PASS"
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chat UI Fixed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main class="chat-wrapper">
+  <div class="chat-container" id="chat" role="log" aria-live="polite">
+    <div class="time-header" id="time-header-1" role="separator">09:00 AM</div>
+    <div class="message left" id="m1">
+      <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect rx='18' width='36' height='36' fill='%23FF8A65'/></svg>" alt="sender avatar">
+      <div class="bubble">Hey! How are you doing today?</div>
+    </div>
+    <div class="message right" id="m2">
+      <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect rx='18' width='36' height='36' fill='%2393E9BE'/></svg>" alt="me avatar">
+      <div class="bubble">I'm good! Working on that new UI layout.</div>
+    </div>
+    <div class="message left" id="m3">
+      <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect rx='18' width='36' height='36' fill='%23FFD54F'/></svg>" alt="sender avatar">
+      <img class="media" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='400'><rect width='200' height='400' fill='%23B39DDB'/></svg>" alt="shared image">
+    </div>
+    <div class="message right" id="m4">
+      <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect rx='18' width='36' height='36' fill='%2383C5FF'/></svg>" alt="me avatar">
+      <div class="bubble">Cool, send me screenshots later.</div>
+    </div>
+  </div>
+
+  <button id="simulate" aria-label="Simulate scroll and insert">Simulate Scroll & Insert</button>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
