@@ -1,0 +1,33 @@
+/* styles.css - fixes for chat UI */
+:root{
+  --bg: #f3f3f3;
+  --bubble-left: #4a90e2;
+  --bubble-right: #7b7b7b;
+  --max-width: 680px;
+}
+body{font-family: system-ui, Arial, sans-serif; margin:0; background:var(--bg);}
+.container{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:3vh 1rem;}
+.chat-wrap{width:100%; max-width:var(--max-width); background:#fff; height:85vh; box-shadow:0 6px 24px rgba(0,0,0,0.08); display:flex; flex-direction:column; border-radius:12px; overflow:hidden}
+.header{padding:12px 16px; background:linear-gradient(180deg,#fff,#fafafa); border-bottom:1px solid #eee; display:flex; align-items:center; gap:10px}
+.header h1{font-size:16px;margin:0}
+.time-header{display:block; text-align:center; font-size:12px; color:#666; padding:6px 0; background:#fafafa; border-bottom:1px solid #eee}
+.chat-body{flex:1; padding:10px 16px; overflow:auto; display:flex; flex-direction:column; gap:10px}
+.message-row{display:flex; align-items:flex-end; gap:10px}
+.message{display:flex; align-items:flex-start; gap:10px; max-width:75%; padding:10px 12px; border-radius:12px; color:#fff}
+.message .bubble{display:block; padding:10px 12px; border-radius:10px; color:#fff; font-size:15px}
+.message.left{align-self:flex-start}
+.message.left .bubble{background:var(--bubble-left)}
+.message.right{align-self:flex-end; flex-direction:row-reverse}
+.message.right .bubble{background:var(--bubble-right)}
+.avatar{width:40px; height:40px; min-width:40px; border-radius:50%; background:linear-gradient(135deg,#e0e9ff,#cfe2ff); display:inline-block; flex:0 0 40px}
+.media-wrap{max-width:360px; width:100%; display:block; border-radius:10px; overflow:hidden}
+.media-wrap img{display:block; width:100%; height:auto; object-fit:cover; border-radius:10px}
+.btn-wrap{position:sticky; bottom:0; display:flex; justify-content:flex-end; gap:8px; padding:12px; background:rgba(255,255,255,0.6)}
+button#simulate{background:linear-gradient(45deg,#4a90e2,#2a6ec6); color:#fff; border:none; border-radius:8px; padding:8px 12px; cursor:pointer}
+.visually-hidden{position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px)}
+/* responsiveness */
+@media(min-width:900px){
+  .media-wrap{max-width:480px}
+}
+/* Themes for improved accessibility */
+.message .bubble small{display:block; font-size:12px; opacity:0.85; margin-top:6px}

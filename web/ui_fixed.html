@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chat UI - Fixed</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <main class="chat-wrap" aria-label="Chat conversation" role="region">
+      <header class="header">
+        <h1>Chat UI Fixed</h1>
+        <div class="visually-hidden" id="chat-announcer" aria-live="polite">No new messages</div>
+      </header>
+      <div id="time-0" class="time-header" role="separator">09:00 AM</div>
+      <div id="chat-body" class="chat-body" role="log" aria-live="polite"></div>
+      <div class="btn-wrap">
+        <button id="simulate" aria-label="Simulate scroll and update">Simulate Scroll & Update</button>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
