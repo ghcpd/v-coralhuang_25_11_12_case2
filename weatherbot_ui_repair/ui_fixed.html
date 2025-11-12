@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherBot - Fixed UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app" role="main" aria-label="Weather bot control panel">
+    <section class="sidebar" aria-label="Controls">
+      <h2>Controls</h2>
+      <div class="control-row">
+        <button id="run-btn" class="button" aria-label="Run" disabled>Run</button>
+        <button id="debug-btn" class="button" aria-label="Debug">Debug</button>
+      </div>
+    </section>
+
+    <section class="chat" aria-label="Chat" id="chat-root">
+      <header class="chat-header">
+        <h1>WeatherBot UI</h1>
+        <p class="version">Version: <strong>1.0</strong></p>
+      </header>
+
+      <div id="message-list" class="message-list" aria-live="polite" aria-relevant="additions removals">
+        <!-- Messages loaded by app.js using minimal DOM updates -->
+      </div>
+
+      <div class="markdown-preview" role="region" aria-label="Markdown preview">
+# WeatherBot UI  
+**Version:** 1.0  
+
+*Features:*  
+- Responsive webchat  
+- Multi-iframe live preview  
+- Integration with rasa_core
+
+        <div class="md-error" aria-hidden="true">⚠️ Error rendering markdown block</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
