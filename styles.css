@@ -1,0 +1,33 @@
+/* Fixed chat UI styles */
+:root { --bg: #f3f3f3; --bubble-left: #4a90e2; --bubble-right: #7b7b7b; }
+* { box-sizing: border-box; }
+body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial; margin: 0; background: var(--bg); color: #222; }
+.app-root { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+ .chat-container { width: 100%; max-width: 700px; background: #fff; border-radius: 8px; height: 80vh; overflow-y: auto; position: relative; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.08); display: flex; flex-direction: column; gap: 10px; }
+/* time header stable and non-flickering */
+.time-header { display: block; position: sticky; top: 0; background: #eee; color: #555; padding: 8px 12px; text-align: center; font-size: 12px; border-radius: 6px; margin: 8px 0; z-index: 4; }
+
+/* message container in flow, not absolute */
+..message { display: block; clear: both; padding: 10px 14px; border-radius: 16px; max-width: 70%; width: fit-content; margin: 8px; color: #fff; }
+.message.left { margin-left: 6px; background: var(--bubble-left); align-self: flex-start; flex-direction: row; margin-right: auto; box-shadow: 0 4px 8px rgba(0,0,0,.08);} 
+.message.right { margin-right: 6px; background: var(--bubble-right); align-self: flex-end; flex-direction: row-reverse; margin-left: auto; box-shadow: 0 4px 8px rgba(0,0,0,.04);} 
+.message .avatar { width: 36px; height: 36px; border-radius: 50%; display: inline-block; flex: 0 0 36px; border: 2px solid rgba(255,255,255,.18); }
+.message .message-body { display: block; color: #fff; line-height: 1.45; }
+
+/* media: preserve aspect ratio and avoid rotation */
+.message img.media { display: block; max-width: min(60vw, 420px); width: auto; height: auto; object-fit: contain; border-radius: 8px; }
+
+/* ensure avatars are anchored and do not drift */
+.message .meta { display: flex; gap: 8px; align-items: center; }
+
+.controls { position: fixed; right: 16px; bottom: 16px; }
+button { background: var(--bubble-left); color: white; border: none; border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+
+/* small-screen adjustments */
+@media (max-width: 420px) { .chat-container { width: calc(100% - 32px); height: 82vh; } .message { max-width: 86%; } }
+
+/* accessibility focus outlines */
+.message:focus { outline: 3px solid rgba(255,255,255,.18); }
+
+/* disable animations that cause flicker */
+* { transition: none !important; }
